@@ -1,0 +1,22 @@
+script#lists-template type="text/x-template"
+  .row.lists
+    .col-xs-12
+      .list-group
+        div v-for='(item, date) in summary_of_lists'
+          li.list-group-item.date
+            .row
+              .col-xs-5
+                | {{ date }}
+              .col-xs-7.amount
+                | ￥{{ item.total_to_comma }}
+          li.list-group-item.items v-for='row in item.lists'
+            .row
+              .col-xs-5.desc.vcenter
+                span
+                  | {{ genres[row.genre_id] }}
+                span.glyphicon.glyphicon-menu-right.sep v-if='row.comment'
+                span v-if='row.comment'
+                  | {{ row.comment }}
+              .col-xs-7.amount.vcenter
+                | ￥{{ row.amount_to_comma }}
+

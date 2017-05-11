@@ -1,0 +1,14 @@
+.sign-in-container
+  h1.app-name
+    = image_tag 'logo-zaishi.png'
+
+  .sign-in-box
+    span.powerd-by powerd by zaim
+    = link_to user_ZaimV2_omniauth_authorize_path, class: 'btn btn-default sign-btn btn-sm' do
+      h2 
+        | sign in
+    br
+    span.warn 
+      | ※zaimのログイン画面に飛びます
+
+

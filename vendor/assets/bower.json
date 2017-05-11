@@ -1,0 +1,6 @@
+{
+  "name": "dsl-generated-dependencies",
+  "dependencies": {
+    "Calendario": "git://github.com/Yama-Tomo/Calendario#d40cb"
+  }
+}

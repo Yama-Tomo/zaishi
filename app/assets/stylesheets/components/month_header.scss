@@ -1,0 +1,18 @@
+.month-header {
+  margin-bottom: 20px;
+
+  .current {
+    text-align: center;
+  }
+
+  .prev {
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .next {
+    text-align: right;
+    cursor: pointer;
+  }
+}
+

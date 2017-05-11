@@ -1,5 +1,10 @@
 {
-  "name": "zaihis",
+  "name": "zaishi",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bower": "^1.8.0",
+    "vue": "^2.3.3",
+    "vue-infinite-loading": "^2.1.0"
+  },
+  "devDependencies": {}
 }

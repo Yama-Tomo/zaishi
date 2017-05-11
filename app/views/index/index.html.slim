@@ -1,0 +1,15 @@
+= render 'components/month_header'
+= render 'components/search_box'
+= render 'components/lists'
+div#app
+  .container
+    month-header v-on:notify-change-month="change_month" v-bind:month="month"
+    search-box v-on:notify-search="change_condition" v-bind:month="month" ref='search_box' v-bind:genres='genres'
+    lists v-bind:lists="lists" v-bind:genres="genres"
+    infinite-loading :on-infinite="infinite" ref="infiniteLoading"
+      span slot="no-more"
+        | &nbsp;
+      span slot="no-results"
+        span v-if='Object.keys(lists).length'
+        span v-else=''
+          | データがありません 

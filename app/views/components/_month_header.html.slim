@@ -1,0 +1,8 @@
+script#month-header-template type="text/x-template"
+ .row.month-header
+   .prev.col-xs-2 v-on:click="move(month.prev)" v-if='month.prev !== null'
+     span.glyphicon.glyphicon-chevron-left
+   .current.col-xs-8
+     | {{ month.current }}
+   .next.col-xs-2 v-on:click="move(month.next)" v-if='month.next !== null'
+     span.glyphicon.glyphicon-chevron-right

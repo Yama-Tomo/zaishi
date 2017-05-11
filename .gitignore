@@ -23,3 +23,10 @@
 .byebug_history
 
 /vendor/bundle
+/vendor/assets/bower_components
+
+/public/assets
+
+*.swp
+.bowerrc
+.env

@@ -1,0 +1,50 @@
+script#search-box-template type="text/x-template"
+  .search-box
+    .row
+      .backdrop v-on:click="calendar" :class="{active:is_cal_active}"
+      #calendar.simple-modal :class="{active:is_cal_active}"
+      .backdrop v-on:click="genre" :class="{active:is_genre_active}"
+      .col-xs-12
+        div.genre.simple-modal :class="{active:is_genre_active}"
+          div.modal-inner
+            div.wrap v-if='filterdRatio.length'
+              div.row
+                div.col-xs-12.modal-title Often paid genres
+
+              div.row v-for="(v, index) in filterdRatio"
+                div.col-xs-3.genre-name
+                  | {{ genres[v.genre_id] }}
+                div.col-xs-7
+                  .progress
+                    .progress-bar role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{ width: v.ratio + "%" }" :class='[ "graph-color" + index ]'
+                    div.amount
+                      | {{ v.ratio }}% ¥{{v.sum}}
+                div.col-xs-2.apply
+                  a.btn.btn-default.btn-sm v-on:click='set_genre_condition(v.genre_id)'
+                    span.glyphicon.glyphicon-zoom-in
+            div.no-data v-else=""
+              | no data
+
+      .col-xs-9.col-sm-10
+        a.condition-btn.btn.btn-default href="#" v-on:click="calendar"
+         span.glyphicon.glyphicon-calendar
+
+        a.condition-btn.btn.btn-default href="#" v-on:click="genre"
+          span.glyphicon.glyphicon-signal
+
+      .col-xs-3.col-sm-2.search
+        a.btn.btn-primary href="#" v-on:click="search"
+          span.glyphicon.glyphicon-search
+
+    .row v-if="Object.keys(conditions).length"
+      .col-xs-9.col-sm-10
+        span.badge.search-condition v-for="(item, index) in conditions" v-on:click="reset(index)" 
+          span v-if='index === "genre"' {{ genres[item] }}
+          span v-else='' {{ item }}
+          | &nbsp;
+          span aria-hidden="true" &times;
+
+      .col-xs-3.col-sm-2.reset
+        a.btn.btn-default.reset-btn href="#" v-on:click="reset(null)"
+          span aria-hidden="true" &times;
+

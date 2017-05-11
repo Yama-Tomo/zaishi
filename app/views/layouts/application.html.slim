@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1'
+    title Zaishi
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    - if flash.present?
+      - flash.each do |key, value|
+        - next if key != 'notice' && key != 'alert'
+        - key = 'success' if key == 'notice'
+        - key = 'danger' if key == 'alert'
+        .alert.alert-dismissible.fade.in role="alert" class=("alert-#{key}")
+          button.close type="button" data-dismiss="alert" aria-label="Close"
+            span aria-hidden="true"&times;
+          strong = value
+
+    - if user_signed_in?
+      .navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            a.btn.glyphicon.glyphicon-menu-hamburger data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+            = link_to root_path, class: 'top' do
+              = image_tag 'logo-zaishi.png'
+
+          .collapse.navbar-collapse#bs-example-navbar-collapse-1
+            ul.nav.navbar-nav
+              li
+                = link_to 'sign out', destroy_user_session_path, method: :delete
+
+    = yield

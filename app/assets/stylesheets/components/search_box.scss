@@ -1,0 +1,253 @@
+@import "mixins";
+
+$search-box-break: 768px;
+
+.search-box {
+  .simple-modal {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    @media screen and (max-width: $search-box-break) {
+      overflow: auto;
+      width: 80%;
+      top: 50px;
+      position: fixed;
+      margin: auto;
+    }
+
+    .modal-inner {
+      .genre-name {
+        font-size: 0.9em;
+      }
+      border-radius: 10px;
+      padding: 4px;
+      background-color: #ececec;
+      .modal-title {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      .no-data {
+        text-align: center;
+        padding: 20px;
+      }
+    }
+  }
+
+  #calendar {
+    height: 290px;
+    @media screen and (max-width: $search-box-break) {
+      overflow: auto;
+      height: 85%;
+      width: 80%;
+      top: 50px;
+      bottom: 0;
+      position: fixed;
+    }
+
+    @media screen and (max-width: $search-box-break) {
+      .fc-calendar .fc-row,
+      .ie9 .fc-calendar .fc-row > div,
+      .fc-calendar .fc-row > div {
+        float: none !important;
+        height: auto;
+        width: 100%;
+        border: none;
+      }
+    }
+
+    .fc-calendar {
+      background-color: white;
+
+      @media screen and (max-width: $search-box-break) {
+        border-radius: 10px;
+        padding: 10px;
+        overflow: auto;
+
+        .fc-body {
+          border: none;
+        }
+      }
+
+      .fc-head {
+        background-color: #272525;
+        @media screen and (max-width: $search-box-break) {
+          display: none;
+        }
+      }
+
+      .fc-row {
+        > div {
+          cursor: pointer;
+
+          @media screen and (max-width: $search-box-break) {
+            background-color: white;
+            min-height: 45px;
+            line-height: 35px;
+            border-bottom: solid 1px #ccc;
+            &:empty {
+              display: none;
+            }
+
+              .fc-calendar-events {
+                display: inline-block;
+                float: right;
+              }
+          }
+
+          > span {
+            &.fc-date {
+              color: #a0a0a0;
+              @media screen and (max-width: $search-box-break) {
+                position: relative;
+                top: auto;
+                left: auto;
+                bottom: auto;
+                right: auto;
+                height: auto;
+                width: auto;
+                width: 25px;
+                display: inline-block;
+                text-align: right;
+              }
+            }
+
+            @media screen and (max-width: $search-box-break) {
+              &.fc-weekday {
+                display: inline-block;
+                width: 40px;
+                color: #fff;
+                color: rgba(27, 24, 24, 0.7);
+                font-size: 10px;
+                text-transform: uppercase;
+                margin-left: 10px;
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .genre {
+    width: 100%;
+    @media screen and (max-width: $search-box-break) {
+      width: 98%;
+      top: 85px;
+    }
+    &.active {
+      display: block;
+    }
+    .modal-inner {
+      background-color: #f6f6f6;
+      .row {
+        [class*='col-'] {
+          padding: 5px;
+        }
+        margin-right: 0px;
+        margin-left: 0px;
+        background-color: #f6f6f6;
+      }
+      .apply {
+        text-align: right;
+      }
+      .progress {
+        background-color: #d0cdcd;
+      }
+      .amount {
+        position: absolute;
+        right: 12px; 
+        color: white;
+      }
+      @include keyframes(graph-anime){
+        0% {width: 0px;}
+      }
+      .progress-bar {
+        background-color: #6d6d6d;
+        @include animation(graph-anime 1.1s ease 1);
+      }
+      .graph-color0 {
+        background-color: rgb(247, 70, 74);
+      }
+      .graph-color1 {
+        background-color: #ff833f;
+      }
+      .graph-color2 {
+        background-color: #ebb400;
+      }
+      .graph-color3 {
+        background-color: #469ce6;
+      }
+      .graph-color4 {
+        background-color: #3dae4e;
+      }
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #0c0c0c;
+    opacity: 0.8;
+    z-index: 1;
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
+  .row {
+    position: relative;
+    background-color: #ececec;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &:not(:first-child) {
+      padding-top: 0px;
+    }
+  }
+
+  .condition-btn {
+    width: 55px;
+    .glyphicon-signal {
+      transform: rotate( 90deg );
+    }
+  }
+
+  .search {
+    text-align: right;
+  }
+
+  .search-condition {
+    height: 21px;
+    display: inline-block;
+    font-size: 1em;
+    background-color: rgba(77, 158, 43, 0.88);
+    padding-top: 4px;
+    &.badge {
+      cursor: pointer;
+    }
+  }
+
+  .reset {
+    text-align: right;
+    .reset-btn {
+      border: none;
+      color: #848484;
+      font-size: 1.4em;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      background-color: transparent;
+      width: 40px;
+    }
+  }
+}
